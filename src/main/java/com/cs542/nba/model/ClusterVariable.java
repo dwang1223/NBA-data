@@ -18,7 +18,6 @@ public class ClusterVariable {
 	float field_goal_pct; /* Field Goal percentage */
 	float three_pct; /* 3 Points percentage */
 	float ft_pct; /* Free Throw percentage */
-	
 	int group;
 	
 	private static final double precision = 0.00001d;
