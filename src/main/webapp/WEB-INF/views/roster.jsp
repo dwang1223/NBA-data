@@ -61,8 +61,8 @@
 			<li><a href="<c:url value="league" />">
 				<span class="li_news"></span> Teams </a>
 			</li>
-			<li><a href="#">
-				<span class="li_bulb"></span> Players
+			<li><a href="<c:url value="/combo" />">
+				<span class="li_bulb"></span> Combos
 			</a></li>
 			<li><a href="<c:url value="stats" />">
 				<span class="li_diamond"></span> Cluster

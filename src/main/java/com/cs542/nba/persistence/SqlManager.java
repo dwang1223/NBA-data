@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.cs542.nba.model.PlayerProfile;
 import com.cs542.nba.model.PlayerStats;
+import com.cs542.nba.model.Standing;
 import com.cs542.nba.model.Team;
 
 public class SqlManager {
@@ -152,5 +153,19 @@ public class SqlManager {
 			return null;
 		
 		return stats.get(0);
+	}
+	
+	public static float getWinRatio(int profile_id) {
+		List<Float> winRatio = DataManager.getDatabaseInstance().query(
+				"Select * from nba_data.standings s,nba_data.team_players t where s.id = t.team_id and t.id = ?", 
+				new Object[]{ profile_id },
+				new RowMapper<Float>() {
+					@Override
+					public Float mapRow(ResultSet rs, int rowNum) throws SQLException {
+						return new Standing(rs.getInt(1), rs.getFloat(2)).getWin_pct();
+					}
+				}	
+				);
+		return winRatio.get(0);
 	}
 }
