@@ -57,7 +57,7 @@
 
 	<nav id="big-nav" class="main-nav hidden-xs">
 		<ul class="text-center">
-			<li><a id="logo" href="<c:url value="index" />">NBA Analytics</a></li>
+			<li><a id="logo" href="<c:url value="/index" />">NBA Analytics</a></li>
 			<li><a href="<c:url value="/league" />">
 				<span class="li_news"></span> Teams </a>
 			</li>
