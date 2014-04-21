@@ -101,14 +101,44 @@
 		<div id="content" class="container clearfix">
 		<div class="row">
 		
-		<div id="dwang">
-			<img src="<c:url value="/resources/img/dwang.png"/>"></img>
+		<div id="dwang" style="float:left; margin-left:20px;">
+			<img width="200px" src="<c:url value="/resources/img/dwang.png"/>"></img>
+			<table style="text-align:center">
+				<tr>
+					<td>Name:</td>
+					<td>Di Wang</td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><a href="mailto:dwang@wpi.edu">dwang@wpi.edu</a></td>
+				</tr>
+			</table>
 		</div>
-		<div id="ylu">
-			<img src="<c:url value="/resources/img/ylu.png"/>"></img>
+		<div id="ylu" style="float:left; margin-left:20px;">
+			<img width="200px" src="<c:url value="/resources/img/ylu.png"/>"></img>
+			<table style="text-align:center">
+				<tr>
+					<td>Name:</td>
+					<td>Yang Lu</td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><a href="mailto:ylu5@wpi.edu">ylu5@wpi.edu</a></td>
+				</tr>
+			</table>
 		</div>
-		<div id="yli">
-			<img src="<c:url value="/resources/img/yli.png"/>"></img>
+		<div id="yli" style="float:left; margin-left:20px;">
+			<img width="200px" src="<c:url value="/resources/img/yli.png"/>"></img>
+			<table style="text-align:center">
+				<tr>
+					<td>Name:</td>
+					<td>Yajing Li</td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><a href="mailto:yli11@wpi.edu">yli11@wpi.edu</a></td>
+				</tr>
+			</table>
 		</div>
 		
 		</div><!-- .row -->
