@@ -287,44 +287,44 @@
 						oTable1 = $('#table-container1').dataTable({
 							"bStateSave": true,
 							"bPaginate": false,
-							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+							"sDom": '<"top">rt<"bottom"lp><"clear">',
 						});
 					} else {
 						oTable.fnDestroy();	
 						oTable.dataTable({
 							"bStateSave": true,
 							"bPaginate": false,
-							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+							"sDom": '<"top">rt<"bottom"lp><"clear">',
 						});
 					}
 			        if (typeof oTable2 === 'undefined') {
 						oTable2 = $('#table-container2').dataTable({
 							"bStateSave": true,
 							"bPaginate": false,
-							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+							"sDom": '<"top">rt<"bottom"lp><"clear">',
 						});
 					} else {
 						oTable2.fnDestroy();	
 						oTable2.dataTable({
 							"bStateSave": true,
 							"bPaginate": false,
-							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+							"sDom": '<"top">rt<"bottom"lp><"clear">',
 						});
 					}
 			        $('#table-container3').dataTable({
 						"bStateSave": true,
 						"bPaginate": false,
-						"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						"sDom": '<"top">rt<"bottom"lp><"clear">',
 					});
 			        $('#table-container4').dataTable({
 						"bStateSave": true,
 						"bPaginate": false,
-						"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						"sDom": '<"top">rt<"bottom"lp><"clear">',
 					});
 			        $('#table-container5').dataTable({
 						"bStateSave": true,
 						"bPaginate": false,
-						"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						"sDom": '<"top">rt<"bottom"lp><"clear">',
 					});
 										
 				});
