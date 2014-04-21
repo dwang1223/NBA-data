@@ -92,9 +92,9 @@
 
 			<div id="post-1158" class="col-md-6">
 				<div class="article-grid">
-					<a class="article-img" href="#"><img width="1200" height="500" src="<c:url value="/resources/img/cover.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
+					<a class="article-img" href="combo"><img width="1200" height="500" src="<c:url value="/resources/img/cover.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
 					<div class="article-cat">
-						<a href="#" title="View all data in Team" rel="category tag">Team</a>	
+						<a href="combo" title="View combinations of clusters" rel="category tag">Cluster Combos</a>	
 					</div>
 
 					<div class="article-grid-content">
