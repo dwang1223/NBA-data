@@ -103,7 +103,59 @@
 		<!-- MAIN CONTENT -->
 		<div id="content" class="container clearfix">
 		<div class="row">
+		
+		
 
+		<div>						
+			<form id="clusterAnalysis">
+				<label for="clusterNumber">Cluster Number: </label>
+				<input type="number" name="clusterNumber" id="clusterNumber" />
+				<input type="submit" value="Show Player Stats" id="submit-button" />
+				<div id="loading-indicator"></div>
+			</form>		
+			
+			<form id="filter">
+				<label for="groupNumber">Group Filter:</label>
+				<input type="number" name="groupNumber" id="groupNumber" />
+				<input type="submit" value="Filter" id="submit-button-2" />
+				<div id="loading-indicator-2"></div>
+			</form>
+			
+			<div class="ex_highlight_row">
+				<table class="sortable" id="table-container">
+				<thead id="table-header-container">
+					<tr>		
+						<th class="sorting">Group</th>									
+						<th class="sorting">Name</th>
+						<th class="sorting">Weight(lbs)</th>
+						<th class="sorting">Height(cm)</th>
+						<th class="sorting">Position</th>
+						<th class="sorting">Primary Position</th>
+						<th class="sorting">G</th>
+						<th class="sorting">Min</th>
+						<th class="sorting">Pts</th>
+						<th class="sorting">FGA</th>
+						<th class="sorting">FGP</th>
+						<th class="sorting">3PA</th>
+						<th class="sorting">3PP</th>
+						<th class="sorting">FTA</th>
+						<th class="sorting">FTP</th>
+						<th class="sorting">AR</th>
+						<th class="sorting">TOR</th>
+						<th class="sorting">ORB</th>
+						<th class="sorting">DRB</th>
+						<th class="sorting">TRB</th>
+						<th class="sorting">STL</th>
+						<th class="sorting">BLK</th>
+						<th class="sorting">Jersey Number</th>
+						<th class="sorting">Birth of date</th>
+						<th class="sorting">Birth Place</th>
+					</tr>
+				</thead>
+				</table>
+			</div>				
+		</div>
+		
 		<div>						
 			<form id="ComboAnalysis">
 				<label for="ComboNumber">Combo Number: </label>
@@ -115,7 +167,7 @@
 			
 			
 			<div class="ex_highlight_row">
-				<table class="sortable" id="table-container">
+				<table class="sortable" id="table-container1">
 				<thead id="table-header-container">
 					<tr>		
 						<th class="sorting">Combination</th>									
@@ -186,14 +238,14 @@
 				
 				$.getJSON('${pageContext.request.contextPath}/api/combo/', function(combos) {
 					
-					$("#table-container tbody").remove();					
+					$("#table-container1 tbody").remove();					
 					
 			        for (var i = 0; i < combos.combo.length; i++) {
 			            tr = $('<tr/>');			          
 			            tr.append("<td>" + combos.combo[i].group + "</td>");			            
 			            tr.append("<td>" + combos.combo[i].winRatio + "</td>");
 			            
-			            $('#table-container').append(tr);
+			            $('#table-container1').append(tr);
 			        	}
 										
 						 for (var i = 0; i < combos.combo2.length; i++) {
@@ -231,8 +283,8 @@
 					            $('#table-container5').append(tr);
 					        }				
 			        
-			        if (typeof oTable === 'undefined') {
-						oTable = $('#table-container').dataTable({
+			        if (typeof oTable1 === 'undefined') {
+						oTable1 = $('#table-container1').dataTable({
 							"bStateSave": true,
 							"bPaginate": false,
 							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
@@ -280,51 +332,51 @@
 				$('#table-container4').hide();
 				$('#table-container3').hide();
 				$('#table-container2').hide();
-				$('#table-container').show();
+				$('#table-container1').hide();
 			});
-			$('#ComboAnalysis').submit(function(e) {
-				var ComboNumber = $('#ComboNumber').val();
+			
+			$('#clusterAnalysis').submit(function(e) {
+				var clusterNumber = $('#clusterNumber').val();
 				
-				if (!ComboNumber) {
-					$('#ComboNumber').focus();
+				if (!clusterNumber) {
+					$('#clusterNumber').focus();
 				}
 				$('#loading-indicator').css('display', 'inline-block');
-								
-					if(ComboNumber==1){
-						$('#table-container5').hide();
-						$('#table-container4').hide();
-						$('#table-container3').hide();
-						$('#table-container2').hide();
-						$('#table-container').show();
-					}
-					else if(ComboNumber==2){
-						$('#table-container5').hide();
-						$('#table-container4').hide();
-						$('#table-container3').hide();
-						$('#table-container').hide(); 
-						$('#table-container2').show();
-					}
-					else if(ComboNumber==3){
-						$('#table-container5').hide();
-						$('#table-container4').hide();
-						$('#table-container').hide();
-						$('#table-container2').hide();
-						$('#table-container3').show();
-					}
-					else if(ComboNumber==4){
-						$('#table-container5').hide();
-						$('#table-container').hide();
-						$('#table-container3').hide();
-						$('#table-container2').hide();
-						$('#table-container4').show();
-					}
-					else if(ComboNumber==5){
-						$('#table-container').hide();
-						$('#table-container4').hide();
-						$('#table-container3').hide();
-						$('#table-container2').hide();
-						$('#table-container5').show();
-					}
+				
+				$.getJSON('${pageContext.request.contextPath}/' + 'api/cluster/' + clusterNumber, function(combo) {
+					
+					$("#table-container tbody").remove();					
+					
+					for (var i = 0; i < combo.length; i++) {
+			            tr = $('<tr/>');
+			            tr.append("<td>" + combo[i].v.group + "</td>");
+			            tr.append("<td>" + combo[i].profile.first_name + " " + combo[i].profile.last_name + "</td>");
+			            tr.append("<td>" + combo[i].profile.weight + "</td>");
+			            tr.append("<td>" + (combo[i].profile.height * 2.54).toFixed(0) + "</td>");
+			            tr.append("<td>" + combo[i].profile.postion + "</td>");
+			            tr.append("<td>" + combo[i].profile.primary_position + "</td>");
+			            tr.append("<td>" + combo[i].stats.games_played + "</td>");
+			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.pts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(2) + "</td>"); 
+			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ar.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.tor.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.or.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.dr.toFixed(2) + "</td>");
+			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.stls.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.blks.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].profile.jersey_number + "</td>");
+			            tr.append("<td>" + combo[i].profile.birthDate + "</td>");
+			            tr.append("<td>" + combo[i].profile.birth_place + "</td>");
+			            
+			            $('#table-container').append(tr);
+			        }
 			        
 			        if (typeof oTable === 'undefined') {
 						oTable = $('#table-container').dataTable({
@@ -339,7 +391,73 @@
 							"bPaginate": false,
 							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
 						});
-					}				
+					}					
+					
+					$('#table-container').show();
+					$('#loading-indicator').hide();
+				});
+				
+				e.preventDefault(); // prevent actual form submit and page reload
+			});
+			
+			$('#ComboAnalysis').submit(function(e) {
+				var ComboNumber = $('#ComboNumber').val();
+				
+				if (!ComboNumber) {
+					$('#ComboNumber').focus();
+				}
+				$('#loading-indicator').css('display', 'inline-block');
+								
+					if(ComboNumber==1){
+						$('#table-container5').hide();
+						$('#table-container4').hide();
+						$('#table-container3').hide();
+						$('#table-container2').hide();
+						$('#table-container1').show();
+					}
+					else if(ComboNumber==2){
+						$('#table-container5').hide();
+						$('#table-container4').hide();
+						$('#table-container3').hide();
+						$('#table-container1').hide(); 
+						$('#table-container2').show();
+					}
+					else if(ComboNumber==3){
+						$('#table-container5').hide();
+						$('#table-container4').hide();
+						$('#table-container1').hide();
+						$('#table-container2').hide();
+						$('#table-container3').show();
+					}
+					else if(ComboNumber==4){
+						$('#table-container5').hide();
+						$('#table-container1').hide();
+						$('#table-container3').hide();
+						$('#table-container2').hide();
+						$('#table-container4').show();
+					}
+					else if(ComboNumber==5){
+						$('#table-container1').hide();
+						$('#table-container4').hide();
+						$('#table-container3').hide();
+						$('#table-container2').hide();
+						$('#table-container5').show();
+					}
+			        
+			      /*  if (typeof oTable === 'undefined') {
+						oTable = $('#table-container').dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					} else {
+						oTable.fnDestroy();	
+						oTable.dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					}	*/			
 							
 				e.preventDefault(); // prevent actual form submit and page reload
 			});

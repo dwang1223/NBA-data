@@ -26,7 +26,17 @@ import com.cs542.nba.utils.Kmeans;
 public class ApiController {
 
 	ArrayList<ClusterVariable> clusteredDataset = new ArrayList<ClusterVariable>();
+	ArrayList<ComboInfo> comboInfo = new ArrayList<ComboInfo>();
 	
+	
+	public ArrayList<ComboInfo> getComboInfo() {
+		return comboInfo;
+	}
+
+	public void setComboInfo(ArrayList<ComboInfo> comboInfo) {
+		this.comboInfo = comboInfo;
+	}
+
 	@RequestMapping(value="stat/players")
 	@ResponseBody
 	public ArrayList<PlayerStats> getPlayerStats() {
@@ -45,17 +55,17 @@ public class ApiController {
 		Kmeans kpp = new Kmeans();
 		clusteredDataset = kpp.lloyd(clusters, dataset);
 		
-		ArrayList<ComboInfo> combo = new ArrayList<ComboInfo>();
+//		ArrayList<ComboInfo> combo = new ArrayList<ComboInfo>();
 		for (int i = 0; i < stats.size(); i++) {
 			PlayerStats s = stats.get(i);
 			ClusterVariable var = clusteredDataset.get(i);
 			PlayerProfile profile = SqlManager.getPlayerProfile(s.getProfile_id());
 			if (profile == null)
 				continue;
-			combo.add( new ComboInfo(profile, s, var) );
+			comboInfo.add( new ComboInfo(profile, s, var) );
 		}
 		
-		return combo;
+		return comboInfo;
 	}
 	
 	@RequestMapping(value="filter/{filter}")
@@ -82,7 +92,8 @@ public class ApiController {
 	public ArrayList<Combo> getCombo() {
 		int cluster = 10;
 		ArrayList<Combo> combo = new ArrayList<Combo>();
-		ArrayList<ComboInfo> stats = getPlayerDetais(cluster);
+		//ArrayList<ComboInfo> stats = getPlayerDetais(cluster);
+		ArrayList<ComboInfo> stats = this.getComboInfo();
 	
 			for(int i=1; i<cluster+1; i++){
 				float SumWinRatio=0,AvgWinRatio= 0,count=0;
