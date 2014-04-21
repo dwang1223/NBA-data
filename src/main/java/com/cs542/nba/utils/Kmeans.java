@@ -35,6 +35,60 @@ public class Kmeans {
 		return d * d;
 	}
 	
+	ArrayList<ClusterVariable> preprocessing(ArrayList<ClusterVariable> dataset) {
+		if (dataset == null)
+			return null;
+		
+		// Find the highest value of each stats
+		ClusterVariable topValue = new ClusterVariable();
+		for (ClusterVariable v : dataset) {
+			if (topValue.getAr() < v.getAr())
+				topValue.setAr(v.getAr());
+			if (topValue.getBlks() < v.getBlks())
+				topValue.setBlks(v.getBlks());
+			if (topValue.getDr() < v.getDr())
+				topValue.setDr(v.getDr());
+			if (topValue.getFt_atts() < v.getFt_atts())
+				topValue.setFt_atts(v.getFt_atts());
+			if (topValue.getFt_pct() < v.getFt_pct())
+				topValue.setFt_pct(v.getFt_pct());
+			if (topValue.getOr() < v.getOr())
+				topValue.setOr(v.getOr());
+			if (topValue.getStls() < v.getStls())
+				topValue.setStls(v.getStls());
+			if (topValue.getThree_atts() < v.getThree_atts())
+				topValue.setThree_atts(v.getThree_atts());
+			if (topValue.getThree_pct() < v.getThree_pct())
+				topValue.setThree_pct(v.getThree_pct());
+			if (topValue.getTor() < v.getTor())
+				topValue.setTor(v.getTor());
+			if (topValue.getTwo_atts() < v.getTwo_atts())
+				topValue.setTwo_atts(v.getTwo_atts());
+			if (topValue.getTwo_pct() < v.getTwo_pct())
+				topValue.setTwo_pct(v.getTwo_pct());
+		}
+		
+		// Z-score all the data
+		ArrayList<ClusterVariable> newDataSet = new ArrayList<ClusterVariable>();
+		for (ClusterVariable v : dataset) {
+			newDataSet.add(new ClusterVariable(v.getAr() / topValue.getAr(), 
+					v.getTor() / topValue.getTor(), 
+					v.getOr() / topValue.getOr(), 
+					v.getDr() / topValue.getDr(), 
+					v.getStls() / topValue.getStls(),
+					v.getBlks() / topValue.getBlks(), 
+					v.getTwo_atts() / topValue.getTwo_atts(), 
+					v.getThree_atts() / topValue.getThree_atts(),
+					v.getFt_atts() / topValue.getFt_atts(), 
+					v.getTwo_pct() / topValue.getTwo_pct(),
+					v.getThree_pct() / topValue.getThree_pct(), 
+					v.getFt_pct() / topValue.getFt_pct())
+			);
+		}
+		
+		return newDataSet;
+	}
+	
 	// K Means++ Algorithm -- find initial seed centoids
 	void initialize(int clusters, ArrayList<ClusterVariable> dataset) {
 		// Create an unchosen vectors
@@ -118,17 +172,19 @@ public class Kmeans {
 	}
 	
 	// Lloyd's Algorithm for K Means cluster analysis
-	public void lloyd(int clusters, ArrayList<ClusterVariable> dataset) {
+	public ArrayList<ClusterVariable> lloyd(int clusters, ArrayList<ClusterVariable> dataset) {
 		if (dataset == null)
-			return;
+			return null;
 		if (dataset.size() == 0 || clusters < 2)
-			return;
+			return null;
 		
-		initialize(clusters, dataset);
+		ArrayList<ClusterVariable> newDataSet = preprocessing(dataset);
+		
+		initialize(clusters, newDataSet);
 		
 		while (true) {
 			newCentoids.clear();
-			groupify(dataset);
+			groupify(newDataSet);
 			
 			// Algorithm stops when centoids no longer move
 			boolean finish = true;
@@ -148,6 +204,8 @@ public class Kmeans {
 		}
 		
 		//printResult(clusters, dataset);
+		
+		return newDataSet;
 	}
 	
 	void printResult(int clusters,  ArrayList<ClusterVariable> dataset) {

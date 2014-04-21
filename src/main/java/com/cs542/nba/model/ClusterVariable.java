@@ -20,7 +20,7 @@ public class ClusterVariable {
 	float ft_pct; /* Free Throw percentage */
 	int group;
 	
-	private static final double precision = 0.00001d;
+	private static final double precision = 0.0000001d;
 	
 	public ClusterVariable(float ar, float tor, float or, float dr, float stls,
 			float blks, float two_atts, float three_atts, float ft_atts,
@@ -41,6 +41,24 @@ public class ClusterVariable {
 		this.three_pct = three_pct;
 		this.ft_pct = ft_pct;
 		
+		this.group = 0;
+	}
+	
+	public ClusterVariable() {
+		this.team_id = 0;
+		this.profile_id = 0;
+		this.ar = 0;
+		this.tor = 0;
+		this.orb = 0;
+		this.drb = 0;
+		this.stls = 0;
+		this.blks = 0;
+		this.field_goal_atts = 0;
+		this.three_atts = 0;
+		this.ft_atts = 0;
+		this.field_goal_pct = 0;
+		this.three_pct = 0;
+		this.ft_pct = 0;
 		this.group = 0;
 	}
 	

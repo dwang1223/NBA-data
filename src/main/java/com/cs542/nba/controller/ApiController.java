@@ -19,7 +19,7 @@ import com.cs542.nba.utils.Kmeans;
 @RequestMapping("api")
 public class ApiController {
 
-	ArrayList<ClusterVariable> dataset = new ArrayList<ClusterVariable>();
+	ArrayList<ClusterVariable> clusteredDataset = new ArrayList<ClusterVariable>();
 	
 	@RequestMapping(value="stat/players")
 	@ResponseBody
@@ -31,17 +31,18 @@ public class ApiController {
 	@ResponseBody
 	public ArrayList<ComboInfo> getPlayerDetais(@PathVariable("clusterNumber") int clusters) {
 		
+		ArrayList<ClusterVariable> dataset = new ArrayList<ClusterVariable>();
 		ArrayList<PlayerStats> stats = getPlayerStats();		
 		for (PlayerStats s : stats) {
 			dataset.add(new ClusterVariable(s));
 		}		
 		Kmeans kpp = new Kmeans();
-		kpp.lloyd(clusters, dataset);
+		clusteredDataset = kpp.lloyd(clusters, dataset);
 		
 		ArrayList<ComboInfo> combo = new ArrayList<ComboInfo>();
 		for (int i = 0; i < stats.size(); i++) {
 			PlayerStats s = stats.get(i);
-			ClusterVariable var = dataset.get(i);
+			ClusterVariable var = clusteredDataset.get(i);
 			PlayerProfile profile = SqlManager.getPlayerProfile(s.getProfile_id());
 			if (profile == null)
 				continue;
@@ -55,14 +56,14 @@ public class ApiController {
 	@ResponseBody
 	public ArrayList<ComboInfo> getFilterGroup(@PathVariable("filter") int filterGroup) {
 		ArrayList<ComboInfo> combo = new ArrayList<ComboInfo>();
-		if (dataset.size() == 0)
+		if (clusteredDataset.size() == 0)
 			return combo;
 		
 		ArrayList<PlayerStats> stats = getPlayerStats();
 		for (int i = 0; i < stats.size(); i++) {
-			if (dataset.get(i).getGroup() == filterGroup) {
+			if (clusteredDataset.get(i).getGroup() == filterGroup) {
 				PlayerStats s = stats.get(i);
-				ClusterVariable var = dataset.get(i);
+				ClusterVariable var = clusteredDataset.get(i);
 				PlayerProfile profile = SqlManager.getPlayerProfile(s.getProfile_id());
 				if (profile == null)
 					continue;

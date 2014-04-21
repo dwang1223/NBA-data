@@ -108,11 +108,11 @@
 				<div class="article-grid">
 					<a class="article-img" href="stats"><img width="1200" height="500" src="<c:url value="/resources/img/player.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
 					<div class="article-cat">
-						<a href="#" title="View all data in Team" rel="category tag">Player</a>	
+						<a href="stats" title="View all data in Team" rel="category tag">Cluster</a>	
 					</div>
 
 					<div class="article-grid-content">
-						<h2><a href="http://scotch.io/tutorials/javascript/submitting-ajax-forms-with-jquery">Expolore Players</a></h2>
+						<h2><a href="stats">Expolore Clusters</a></h2>
 						<p><p>Let's focus on what the players did instead of how they look.</p></p>
 					</div>
 				</div>
