@@ -62,7 +62,7 @@
 				<span class="li_diamond"></span> Cluster
 			</a></li>
 			
-			<li><a href="#">
+			<li><a href="<c:url value="about" />">
 				<span class="li_user"></span> About
 			</a></li>
 		</ul>

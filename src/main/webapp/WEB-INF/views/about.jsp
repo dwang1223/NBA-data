@@ -57,18 +57,18 @@
 
 	<nav id="big-nav" class="main-nav hidden-xs">
 		<ul class="text-center">
-			<li><a id="logo" href="<c:url value="/index" />">NBA Analytics</a></li>
-			<li><a href="<c:url value="/league" />">
+			<li><a id="logo" href="<c:url value="index" />">NBA Analytics</a></li>
+			<li><a href="<c:url value="league" />">
 				<span class="li_news"></span> Teams </a>
 			</li>
 			<li><a href="<c:url value="/combo" />">
 				<span class="li_bulb"></span> Combos
 			</a></li>
-			<li><a href="<c:url value="/stats" />">
+			<li><a href="<c:url value="stats" />">
 				<span class="li_diamond"></span> Cluster
 			</a></li>
 			
-			<li><a href="<c:url value="about" />">
+			<li><a href="#">
 				<span class="li_user"></span> About
 			</a></li>
 		</ul>
@@ -79,6 +79,12 @@
 		<header class="visible-sm visible-md visible-lg" id="search-header">
 			<div class="container">
 				<div class="row">
+					<div class="search-form" id="search">
+						<span class="li_search"></span>
+						<form action="http://scotch.io/" method="GET" name="search" role="search">
+							<input type="search" name="s">
+						</form>
+					</div>
 
 					<!-- TAGLINE -->
 					<div id="tagline" class="col-md-4 hidden-xs hidden-sm">
@@ -94,74 +100,18 @@
 		<!-- MAIN CONTENT -->
 		<div id="content" class="container clearfix">
 		<div class="row">
-
-		<table class="info">
-			<thead>
-			<tr>
-				<th>Name</th>
-				<th>City</th>
-				<th>Conference</th>
-				<th>Division</th>
-				<th>Alias</th>
-				<th>Venue Name</th>
-				<th>Venue Capacity</th>
-				<th>Address</th>
-				<th>State</th>
-			</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><c:out value="${team.name}" /></td>
-					<td><c:out value="${team.city}" /></td>
-					<td><c:out value="${team.conference}" /></td>
-					<td><c:out value="${team.division}" /></td>
-					<td><c:out value="${team.alias}" /></td>
-					<td><c:out value="${team.venue_name}" /></td>
-					<td><c:out value="${team.capacity}" /></td>
-					<td><c:out value="${team.address}" /></td>
-					<td><c:out value="${team.state}" /></td>
-				</tr>
-			</tbody>
-		</table>
+		
+		<div id="dwang">
+			<img src="<c:url value="/resources/img/dwang.png"/>"></img>
+		</div>
+		<div id="ylu">
+			<img src="<c:url value="/resources/img/ylu.png"/>"></img>
+		</div>
+		<div id="yli">
+			<img src="<c:url value="/resources/img/yli.png"/>"></img>
+		</div>
 		
 		</div><!-- .row -->
-		
-		<div>
-			<table class="info">
-				<thead>
-				<tr>
-					<th>Name</th>
-					<th>Abbr</th>
-					<th>Weight</th>
-					<th>Height</th>
-					<th>Birth Date</th>
-					<th>Position</th>
-					<th>Primary Position</th>
-					<th>Jersey Number</th>
-					<th>Birth Place</th>
-				</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${roster}" var="player">
-					<tr>
-						<td>
-							<a href="${pageContext.request.contextPath}/player/<c:out value="${player.profile_id}"/>">
-								<c:out value="${player.first_name} ${player.last_name}" />
-							</a>
-						</td>
-						<td><c:out value="${player.abbr_name}" /></td>
-						<td><c:out value="${player.weight}" /></td>
-						<td><c:out value="${player.height}" /></td>
-						<td><c:out value="${player.birthDate}" /></td>
-						<td><c:out value="${player.postion}" /></td>
-						<td><c:out value="${player.primary_position}" /></td>
-						<td><c:out value="${player.jersey_number}" /></td>
-						<td><c:out value="${player.birth_place}" /></td>
-					</tr>
-				</c:forEach>
-				</tbody>
-			</table>
-		</div>
 		</div><!-- #content .container -->
 	</div> <!-- main -->
 
@@ -178,11 +128,11 @@
 				}
 				$('#loading-indicator').css('display', 'inline-block');
 				
-				$.getJSON('http://localhost:8080/NBA-data/api/cluster/' + clusterNumber, function(combo) {
+				$.getJSON('${pageContext.request.contextPath}/' + 'api/cluster/' + clusterNumber, function(combo) {
 					
 					$("#table-container tbody").remove();					
 					
-			        for (var i = 0; i < combo.length; i++) {
+					for (var i = 0; i < combo.length; i++) {
 			            tr = $('<tr/>');
 			            tr.append("<td>" + combo[i].v.group + "</td>");
 			            tr.append("<td>" + combo[i].profile.first_name + " " + combo[i].profile.last_name + "</td>");
@@ -191,21 +141,21 @@
 			            tr.append("<td>" + combo[i].profile.postion + "</td>");
 			            tr.append("<td>" + combo[i].profile.primary_position + "</td>");
 			            tr.append("<td>" + combo[i].stats.games_played + "</td>");
-			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + (combo[i].stats.points / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(1) + "</td>"); 
-			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ar.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.tor.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.or.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.dr.toFixed(3) + "</td>");
-			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.stls.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.blks.toFixed(3) + "</td>");
+			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.pts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(2) + "</td>"); 
+			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ar.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.tor.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.or.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.dr.toFixed(2) + "</td>");
+			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.stls.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.blks.toFixed(2) + "</td>");
 			            tr.append("<td>" + combo[i].profile.jersey_number + "</td>");
 			            tr.append("<td>" + combo[i].profile.birthDate + "</td>");
 			            tr.append("<td>" + combo[i].profile.birth_place + "</td>");
@@ -244,7 +194,7 @@
 				groupNumber = $('#groupNumber').val();
 				$('#loading-indicator-2').css('display', 'inline-block');
 				
-				$.getJSON('http://localhost:8080/NBA-data/api/filter/' + groupNumber, function(combo) {
+				$.getJSON('${pageContext.request.contextPath}/' + 'api/filter/' + groupNumber, function(combo) {
 					
 					$("#table-container tbody").remove();					
 					
@@ -257,21 +207,21 @@
 			            tr.append("<td>" + combo[i].profile.postion + "</td>");
 			            tr.append("<td>" + combo[i].profile.primary_position + "</td>");
 			            tr.append("<td>" + combo[i].stats.games_played + "</td>");
-			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + (combo[i].stats.points / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(1) + "</td>"); 
-			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ar.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.tor.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.or.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.dr.toFixed(3) + "</td>");
-			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.stls.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.blks.toFixed(3) + "</td>");
+			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.pts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(2) + "</td>"); 
+			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ar.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.tor.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.or.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.dr.toFixed(2) + "</td>");
+			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.stls.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.blks.toFixed(2) + "</td>");
 			            tr.append("<td>" + combo[i].profile.jersey_number + "</td>");
 			            tr.append("<td>" + combo[i].profile.birthDate + "</td>");
 			            tr.append("<td>" + combo[i].profile.birth_place + "</td>");
