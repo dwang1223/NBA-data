@@ -51,20 +51,18 @@
 <body class="page page-id-12 page-template page-template-page-work-php page-template page-template-page-work-php" style="" data-twttr-rendered="true">
 	<nav id="big-nav" class="main-nav hidden-xs">
 		<ul class="text-center">
-			<li><a id="logo" href="#/">NBA Analytics</a></li>
-			<li><a href="http://scotch.io/bar-talk">
+			<li><a id="logo" href="<c:url value="index" />">NBA Analytics</a></li>
+			<li><a href="<c:url value="league" />">
 				<span class="li_news"></span> Teams </a>
 			</li>
-			<li><a href="http://scotch.io/tutorials">
+			<li><a href="#">
 				<span class="li_bulb"></span> Players
 			</a></li>
-			<li><a href="http://scotch.io/series">
-				<span class="li_diamond"></span> Statistics
+			<li><a href="<c:url value="stats" />">
+				<span class="li_diamond"></span> Cluster
 			</a></li>
-			<li><a href="http://scotch.io/quick-tips">
-				<span class="li_star"></span> Quick Tips
-			</a></li>
-			<li><a href="http://scotch.io/about">
+			
+			<li><a href="#">
 				<span class="li_user"></span> About
 			</a></li>
 		</ul>
@@ -75,12 +73,7 @@
 		<header class="visible-sm visible-md visible-lg" id="search-header">
 			<div class="container">
 				<div class="row">
-					<div class="search-form" id="search">
-						<span class="li_search"></span>
-						<form action="http://scotch.io/" method="GET" name="search" role="search">
-							<input type="search" name="s">
-						</form>
-					</div>
+					
 
 					<!-- TAGLINE -->
 					<div id="tagline" class="col-md-4 hidden-xs hidden-sm">
@@ -101,7 +94,7 @@
 				<div class="article-grid">
 					<a class="article-img" href="#"><img width="1200" height="500" src="<c:url value="/resources/img/cover.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
 					<div class="article-cat">
-						<a href="http://scotch.io/category/tutorials/javascript" title="View all data in Team" rel="category tag">Team</a>	
+						<a href="#" title="View all data in Team" rel="category tag">Team</a>	
 					</div>
 
 					<div class="article-grid-content">
@@ -115,12 +108,12 @@
 				<div class="article-grid">
 					<a class="article-img" href="stats"><img width="1200" height="500" src="<c:url value="/resources/img/player.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
 					<div class="article-cat">
-						<a href="http://scotch.io/category/tutorials/javascript" title="View all data in Team" rel="category tag">Player</a>	
+						<a href="#" title="View all data in Team" rel="category tag">Player</a>	
 					</div>
 
 					<div class="article-grid-content">
 						<h2><a href="http://scotch.io/tutorials/javascript/submitting-ajax-forms-with-jquery">Expolore Players</a></h2>
-						<p><p>Let's explore the truth behind data.</p></p>
+						<p><p>Let's focus on what the players did instead of how they look.</p></p>
 					</div>
 				</div>
 			</div>

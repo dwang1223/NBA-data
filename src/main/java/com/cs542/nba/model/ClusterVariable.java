@@ -8,8 +8,8 @@ public class ClusterVariable {
 	int profile_id;
 	float ar; /* Assist Ratio */
 	float tor; /* Turnover Ratio */
-	float or; /* Average Offensive Rebound */
-	float dr; /* Average Defensive Rebound */
+	float orb; /* Average Offensive Rebound */
+	float drb; /* Average Defensive Rebound */
 	float stls; /* Average Steals */
 	float blks; /* Average Blocks */
 	float field_goal_atts; /* Average Shoot Attempts */
@@ -30,8 +30,8 @@ public class ClusterVariable {
 		this.profile_id = 0;
 		this.ar = ar;
 		this.tor = tor;
-		this.or = or;
-		this.dr = dr;
+		this.orb = or;
+		this.drb = dr;
 		this.stls = stls;
 		this.blks = blks;
 		this.field_goal_atts = two_atts;
@@ -49,8 +49,8 @@ public class ClusterVariable {
 		this.profile_id = stats.profile_id;
 		this.ar = ( stats.assists ) / (stats.free_throws_att * 0.44f + stats.field_goals_att + stats.turnovers);
 		this.tor = (stats.turnovers) / (stats.free_throws_att * 0.44f + stats.field_goals_att + stats.turnovers);
-		this.or = (float)stats.offensive_rebounds / stats.games_played;
-		this.dr = (float)stats.defensive_rebounds / stats.games_played;
+		this.orb = (float)stats.offensive_rebounds / stats.games_played;
+		this.drb = (float)stats.defensive_rebounds / stats.games_played;
 		this.stls = (float)stats.steals / stats.games_played;
 		this.blks = (float)stats.blocks / stats.games_played;
 		this.field_goal_atts = (float)(stats.field_goals_att/* - stats.three_points_att*/) / stats.games_played;
@@ -101,19 +101,19 @@ public class ClusterVariable {
 	}
 
 	public float getOr() {
-		return or;
+		return orb;
 	}
 
 	public void setOr(float or) {
-		this.or = or;
+		this.orb = or;
 	}
 
 	public float getDr() {
-		return dr;
+		return drb;
 	}
 
 	public void setDr(float dr) {
-		this.dr = dr;
+		this.drb = dr;
 	}
 
 	public float getStls() {
@@ -191,8 +191,8 @@ public class ClusterVariable {
 	public boolean isEqual(ClusterVariable var) {
 		return (this.ar - var.ar < precision) &&
 				(this.tor - var.tor < precision) &&
-				(this.or - var.or < precision) &&
-				(this.dr - var.dr < precision) &&
+				(this.orb - var.orb < precision) &&
+				(this.drb - var.drb < precision) &&
 				(this.stls - var.stls < precision) &&
 				(this.blks - var.blks < precision) &&
 				(this.field_goal_atts - var.field_goal_atts < precision) &&

@@ -12,7 +12,7 @@ public class DataManager {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	    	dataSource.setUrl("jdbc:mysql://localhost:3306/NBA_data");
 	    	dataSource.setUsername("root");
-	    	dataSource.setPassword("king");
+	    	dataSource.setPassword("");
 	    	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 	    	databaseInstance = new JdbcTemplate(dataSource);
 		}

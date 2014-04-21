@@ -57,20 +57,18 @@
 
 	<nav id="big-nav" class="main-nav hidden-xs">
 		<ul class="text-center">
-			<li><a id="logo" href="#/">NBA Analytics</a></li>
-			<li><a href="http://scotch.io/bar-talk">
+			<li><a id="logo" href="<c:url value="index" />">NBA Analytics</a></li>
+			<li><a href="<c:url value="league" />">
 				<span class="li_news"></span> Teams </a>
 			</li>
-			<li><a href="http://scotch.io/tutorials">
+			<li><a href="#">
 				<span class="li_bulb"></span> Players
 			</a></li>
-			<li><a href="http://scotch.io/series">
-				<span class="li_diamond"></span> Statistics
+			<li><a href="<c:url value="stats" />">
+				<span class="li_diamond"></span> Cluster
 			</a></li>
-			<li><a href="http://scotch.io/quick-tips">
-				<span class="li_star"></span> Quick Tips
-			</a></li>
-			<li><a href="http://scotch.io/about">
+			
+			<li><a href="#">
 				<span class="li_user"></span> About
 			</a></li>
 		</ul>
