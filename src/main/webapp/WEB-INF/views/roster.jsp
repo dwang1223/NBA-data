@@ -57,14 +57,14 @@
 
 	<nav id="big-nav" class="main-nav hidden-xs">
 		<ul class="text-center">
-			<li><a id="logo" href="<c:url value="index" />">NBA Analytics</a></li>
-			<li><a href="<c:url value="league" />">
+			<li><a id="logo" href="<c:url value="/index" />">NBA Analytics</a></li>
+			<li><a href="<c:url value="/league" />">
 				<span class="li_news"></span> Teams </a>
 			</li>
 			<li><a href="#">
 				<span class="li_bulb"></span> Players
 			</a></li>
-			<li><a href="<c:url value="stats" />">
+			<li><a href="<c:url value="/stats" />">
 				<span class="li_diamond"></span> Cluster
 			</a></li>
 			
