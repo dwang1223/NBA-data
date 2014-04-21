@@ -101,6 +101,10 @@
 		<div id="content" class="container clearfix">
 		<div class="row">
 		
+		<div style="clear:both;margin:20px">
+			<h3><a href="https://github.com/DiWang1223/NBA-data">Github</a></h3>
+		</div>
+		
 		<div id="dwang" style="float:left; margin-left:20px;">
 			<img width="200px" src="<c:url value="/resources/img/dwang.png"/>"></img>
 			<table style="text-align:center">
@@ -140,6 +144,8 @@
 				</tr>
 			</table>
 		</div>
+		
+		
 		
 		</div><!-- .row -->
 		</div><!-- #content .container -->
