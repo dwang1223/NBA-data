@@ -167,11 +167,11 @@
 				}
 				$('#loading-indicator').css('display', 'inline-block');
 				
-				$.getJSON('http://localhost:8080/NBA-data/api/cluster/' + clusterNumber, function(combo) {
+				$.getJSON('${pageContext.request.contextPath}/' + 'api/cluster/' + clusterNumber, function(combo) {
 					
 					$("#table-container tbody").remove();					
 					
-			        for (var i = 0; i < combo.length; i++) {
+					for (var i = 0; i < combo.length; i++) {
 			            tr = $('<tr/>');
 			            tr.append("<td>" + combo[i].v.group + "</td>");
 			            tr.append("<td>" + combo[i].profile.first_name + " " + combo[i].profile.last_name + "</td>");
@@ -180,21 +180,21 @@
 			            tr.append("<td>" + combo[i].profile.postion + "</td>");
 			            tr.append("<td>" + combo[i].profile.primary_position + "</td>");
 			            tr.append("<td>" + combo[i].stats.games_played + "</td>");
-			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + (combo[i].stats.points / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(1) + "</td>"); 
-			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ar.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.tor.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.or.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.dr.toFixed(3) + "</td>");
-			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.stls.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.blks.toFixed(3) + "</td>");
+			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.pts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(2) + "</td>"); 
+			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ar.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.tor.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.or.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.dr.toFixed(2) + "</td>");
+			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.stls.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.blks.toFixed(2) + "</td>");
 			            tr.append("<td>" + combo[i].profile.jersey_number + "</td>");
 			            tr.append("<td>" + combo[i].profile.birthDate + "</td>");
 			            tr.append("<td>" + combo[i].profile.birth_place + "</td>");
@@ -233,7 +233,7 @@
 				groupNumber = $('#groupNumber').val();
 				$('#loading-indicator-2').css('display', 'inline-block');
 				
-				$.getJSON('http://localhost:8080/NBA-data/api/filter/' + groupNumber, function(combo) {
+				$.getJSON('${pageContext.request.contextPath}/' + 'api/filter/' + groupNumber, function(combo) {
 					
 					$("#table-container tbody").remove();					
 					
@@ -246,21 +246,21 @@
 			            tr.append("<td>" + combo[i].profile.postion + "</td>");
 			            tr.append("<td>" + combo[i].profile.primary_position + "</td>");
 			            tr.append("<td>" + combo[i].stats.games_played + "</td>");
-			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + (combo[i].stats.points / combo[i].stats.games_played).toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.two_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_atts.toFixed(1) + "</td>");
-			            tr.append("<td>" + combo[i].v.three_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(1) + "</td>"); 
-			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.ar.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.tor.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.or.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.dr.toFixed(3) + "</td>");
-			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.stls.toFixed(3) + "</td>");
-			            tr.append("<td>" + combo[i].v.blks.toFixed(3) + "</td>");
+			            tr.append("<td>" + (combo[i].stats.minutes / combo[i].stats.games_played).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.pts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.two_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_atts.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.three_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ft_atts.toFixed(2) + "</td>"); 
+			            tr.append("<td>" + combo[i].v.ft_pct.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.ar.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.tor.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.or.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.dr.toFixed(2) + "</td>");
+			            tr.append("<td>" + (combo[i].v.or + combo[i].v.dr).toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.stls.toFixed(2) + "</td>");
+			            tr.append("<td>" + combo[i].v.blks.toFixed(2) + "</td>");
 			            tr.append("<td>" + combo[i].profile.jersey_number + "</td>");
 			            tr.append("<td>" + combo[i].profile.birthDate + "</td>");
 			            tr.append("<td>" + combo[i].profile.birth_place + "</td>");

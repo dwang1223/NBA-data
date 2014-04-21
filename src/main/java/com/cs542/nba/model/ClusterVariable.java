@@ -18,13 +18,14 @@ public class ClusterVariable {
 	float field_goal_pct; /* Field Goal percentage */
 	float three_pct; /* 3 Points percentage */
 	float ft_pct; /* Free Throw percentage */
+	float pts; /* Average Points per game */
 	int group;
 	
 	private static final double precision = 0.0000001d;
 	
 	public ClusterVariable(float ar, float tor, float or, float dr, float stls,
 			float blks, float two_atts, float three_atts, float ft_atts,
-			float two_pct, float three_pct, float ft_pct) {
+			float two_pct, float three_pct, float ft_pct, float pts) {
 		super();
 		this.team_id = 0;
 		this.profile_id = 0;
@@ -40,6 +41,7 @@ public class ClusterVariable {
 		this.field_goal_pct = two_pct;
 		this.three_pct = three_pct;
 		this.ft_pct = ft_pct;
+		this.pts = pts;
 		
 		this.group = 0;
 	}
@@ -59,6 +61,7 @@ public class ClusterVariable {
 		this.field_goal_pct = 0;
 		this.three_pct = 0;
 		this.ft_pct = 0;
+		this.pts = 0;
 		this.group = 0;
 	}
 	
@@ -74,6 +77,7 @@ public class ClusterVariable {
 		this.field_goal_atts = (float)(stats.field_goals_att/* - stats.three_points_att*/) / stats.games_played;
 		this.three_atts = (float)stats.three_points_att / stats.games_played;
 		this.ft_atts = (float)stats.free_throws_att / stats.games_played;
+		this.pts = stats.points / stats.games_played;
 		if (stats.field_goals_att == 0)
 			this.field_goal_pct = 0;
 		else
@@ -196,6 +200,14 @@ public class ClusterVariable {
 
 	public void setFt_pct(float ft_pct) {
 		this.ft_pct = ft_pct;
+	}
+	
+	public float getPts() {
+		return pts;
+	}
+
+	public void setPts(float pts) {
+		this.pts = pts;
 	}
 
 	public int getGroup() {

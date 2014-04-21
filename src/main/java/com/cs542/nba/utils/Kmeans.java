@@ -26,8 +26,9 @@ public class Kmeans {
 		float v10 = compute(p.getTor(), center.getTor());
 		float v11 = compute(p.getTwo_atts(), center.getTwo_atts());
 		float v12 = compute(p.getTwo_pct(), center.getTwo_pct());
+		float v13 = compute(p.getPts(), center.getPts());
 		
-		return Math.sqrt(v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12);
+		return Math.sqrt(v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13);
 	}
 	
 	double getD2(ClusterVariable p, ClusterVariable center) {
@@ -66,6 +67,8 @@ public class Kmeans {
 				topValue.setTwo_atts(v.getTwo_atts());
 			if (topValue.getTwo_pct() < v.getTwo_pct())
 				topValue.setTwo_pct(v.getTwo_pct());
+			if (topValue.getPts() < v.getPts())
+				topValue.setPts(v.getPts());
 		}
 		
 		// Z-score all the data
@@ -82,7 +85,8 @@ public class Kmeans {
 					v.getFt_atts() / topValue.getFt_atts(), 
 					v.getTwo_pct() / topValue.getTwo_pct(),
 					v.getThree_pct() / topValue.getThree_pct(), 
-					v.getFt_pct() / topValue.getFt_pct())
+					v.getFt_pct() / topValue.getFt_pct(),
+					v.getPts() / topValue.getPts())
 			);
 		}
 		
@@ -148,7 +152,7 @@ public class Kmeans {
 		// Compute new centoids
 		for (int i = 1; i <= centoids.size(); i++) {
 			int count = 0;
-			float[] v = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // 12 zeros
+			float[] v = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // 13 zeros
 			for (ClusterVariable var : dataset) {
 				if (var.getGroup() == i) {
 					count++;
@@ -164,10 +168,12 @@ public class Kmeans {
 					v[9] += var.getTwo_pct();
 					v[10] += var.getThree_pct();
 					v[11] += var.getFt_pct();
+					v[12] += var.getPts();
 				}
 			}
 			newCentoids.add(new ClusterVariable(v[0] / count, v[1] / count, v[2] / count, v[3] / count, v[4] / count, 
-					v[5] / count, v[6] / count, v[7] / count, v[8] / count, v[9] / count, v[10] / count, v[11] / count));
+					v[5] / count, v[6] / count, v[7] / count, v[8] / count, v[9] / count, v[10] / count, v[11] / count,
+					v[12] / count));
 		}
 	}
 	
@@ -213,11 +219,11 @@ public class Kmeans {
 			System.out.format("\n%d:\n", i);
 			for (ClusterVariable p : dataset) {
 				if (p.getGroup() == i) {
-					System.out.format("%d %d %f %f %f %f %f %f %f %f %f %f %f %f\n", 
+					System.out.format("%d %d %f %f %f %f %f %f %f %f %f %f %f %f %f\n", 
 							p.getTeam_id(), p.getProfile_id(), p.getAr(), p.getTor(),
 							p.getOr(), p.getDr(), p.getStls(), p.getBlks(), p.getTwo_atts(),
 							p.getThree_atts(), p.getFt_atts(), p.getTwo_pct(), p.getThree_pct(),
-							p.getFt_pct());
+							p.getFt_pct(), p.getPts());
 				}
 			}
 		}
