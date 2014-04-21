@@ -80,10 +80,11 @@ public class ApiController {
 	}
 	
 	public ArrayList<Combo> getCombo() {
+		int cluster = 10;
 		ArrayList<Combo> combo = new ArrayList<Combo>();
-		ArrayList<ComboInfo> stats = getPlayerDetais(9);
+		ArrayList<ComboInfo> stats = getPlayerDetais(cluster);
 	
-			for(int i=1; i<10; i++){
+			for(int i=1; i<cluster+1; i++){
 				float SumWinRatio=0,AvgWinRatio= 0,count=0;
 				for(int j=0; j<stats.size(); j++){				
 					if(stats.get(j).getV().getGroup() == i){
@@ -106,12 +107,13 @@ public class ApiController {
 	@RequestMapping(value="combo")
 	@ResponseBody
 	public Combos getCombos() {
+		int cluster = 10;
 		ArrayList<Combo2> Combo2 = new ArrayList<Combo2>();
 		ArrayList<Combo> combo = this.getCombo();	
 		
-		for(int i=1; i<9; i++){  //i is the first cluster number
+		for(int i=1; i<cluster; i++){  //i is the first cluster number
 			float AvgWinRatio= 0;
-			for(int j=i+1; j<10; j++){	//j is for the second cluster 							
+			for(int j=i+1; j<cluster+1; j++){	//j is for the second cluster 							
 				float winRatio1 = combo.get(i-1).getWinRatio();
 				float winRatio2 = combo.get(j-1).getWinRatio();
 				AvgWinRatio = (winRatio1+winRatio2)/2;
@@ -124,10 +126,10 @@ public class ApiController {
 		ArrayList<Combo3> Combo3 = new ArrayList<Combo3>();
 
 		//ArrayList<ComboInfo> stats = getPlayerDetais(9);
-		for(int i=1; i<8; i++){  //i is the first cluster number
+		for(int i=1; i<cluster-1; i++){  //i is the first cluster number
 			float AvgWinRatio= 0;
-			for(int j=i+1; j<9; j++){	//j is for the second cluster 
-				for(int k=j+1; k<10; k++){
+			for(int j=i+1; j<cluster; j++){	//j is for the second cluster 
+				for(int k=j+1; k<cluster+1; k++){
 				
 				float winRatio1 = combo.get(i-1).getWinRatio();
 				float winRatio2 = combo.get(j-1).getWinRatio();
@@ -143,11 +145,11 @@ public class ApiController {
 		ArrayList<Combo4> Combo4 = new ArrayList<Combo4>();
 
 		//ArrayList<ComboInfo> stats = getPlayerDetais(9);
-		for(int i=1; i<7; i++){  //i is the first cluster number
+		for(int i=1; i<cluster-2; i++){  //i is the first cluster number
 			float AvgWinRatio= 0;
-			for(int j=i+1; j<8; j++){	//j is for the second cluster 
-				for(int k=j+1; k<9; k++){
-					for(int l=k+1;l<10;l++){
+			for(int j=i+1; j<cluster-1; j++){	//j is for the second cluster 
+				for(int k=j+1; k<cluster; k++){
+					for(int l=k+1;l<cluster+1;l++){
 				
 				float winRatio1 = combo.get(i-1).getWinRatio();
 				float winRatio2 = combo.get(j-1).getWinRatio();
@@ -164,12 +166,12 @@ public class ApiController {
 		ArrayList<Combo5> Combo5 = new ArrayList<Combo5>();
 
 		//ArrayList<ComboInfo> stats = getPlayerDetais(9);
-		for(int i=1; i<6; i++){  //i is the first cluster number
+		for(int i=1; i<cluster-3; i++){  //i is the first cluster number
 			float AvgWinRatio= 0;
-			for(int j=i+1; j<7; j++){	//j is for the second cluster 
-				for(int k=j+1; k<8; k++){
-					for(int l=k+1;l<9;l++){
-						for(int m=l+1;m<10;m++){
+			for(int j=i+1; j<cluster-2; j++){	//j is for the second cluster 
+				for(int k=j+1; k<cluster-1; k++){
+					for(int l=k+1;l<cluster;l++){
+						for(int m=l+1;m<cluster+1;m++){
 				float winRatio1 = combo.get(i-1).getWinRatio();
 				float winRatio2 = combo.get(j-1).getWinRatio();
 				float winRatio3 = combo.get(k-1).getWinRatio();
