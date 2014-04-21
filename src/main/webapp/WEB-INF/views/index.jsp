@@ -92,13 +92,13 @@
 
 			<div id="post-1158" class="col-md-6">
 				<div class="article-grid">
-					<a class="article-img" href="combo"><img width="1200" height="500" src="<c:url value="/resources/img/cover.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
+					<a class="article-img" href="combo"><img width="1200" height="500" src="<c:url value="/resources/img/team2.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
 					<div class="article-cat">
 						<a href="combo" title="View combinations of clusters" rel="category tag">Cluster Combos</a>	
 					</div>
 
 					<div class="article-grid-content">
-						<h2><a href="http://scotch.io/tutorials/javascript/submitting-ajax-forms-with-jquery">Expolore Teams</a></h2>
+						<h2><a href="#">Expolore Teams</a></h2>
 						<p><p>Let's explore the truth behind data.</p></p>
 					</div>
 				</div>
