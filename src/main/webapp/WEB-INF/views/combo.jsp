@@ -290,8 +290,8 @@
 							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
 						});
 					} else {
-						oTable.fnDestroy();	
-						oTable.dataTable({
+						oTable1.fnDestroy();	
+						oTable1.dataTable({
 							"bStateSave": true,
 							"bPaginate": false,
 							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
@@ -311,21 +311,49 @@
 							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
 						});
 					}
-			        $('#table-container3').dataTable({
-						"bStateSave": true,
-						"bPaginate": false,
-						"sDom": '<"top"if>rt<"bottom"lp><"clear">',
-					});
-			        $('#table-container4').dataTable({
-						"bStateSave": true,
-						"bPaginate": false,
-						"sDom": '<"top"if>rt<"bottom"lp><"clear">',
-					});
-			        $('#table-container5').dataTable({
-						"bStateSave": true,
-						"bPaginate": false,
-						"sDom": '<"top"if>rt<"bottom"lp><"clear">',
-					});
+			        if (typeof oTable3 === 'undefined') {
+						oTable3 = $('#table-container3').dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					} else {
+						oTable3.fnDestroy();	
+						oTable3.dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					}
+			        if (typeof oTable4 === 'undefined') {
+						oTable4 = $('#table-container4').dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					} else {
+						oTable4.fnDestroy();	
+						oTable4.dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					}
+			        if (typeof oTable5 === 'undefined') {
+						oTable5 = $('#table-container5').dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					} else {
+						oTable5.fnDestroy();	
+						oTable5.dataTable({
+							"bStateSave": true,
+							"bPaginate": false,
+							"sDom": '<"top"if>rt<"bottom"lp><"clear">',
+						});
+					}
+			        
 										
 				});
 				$('#table-container5').hide();
