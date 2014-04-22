@@ -236,126 +236,7 @@
 	<script>
 			$(document).ready(function(){
 				
-				$.getJSON('${pageContext.request.contextPath}/api/combo/', function(combos) {
-					
-					$("#table-container1 tbody").remove();					
-					
-			        for (var i = 0; i < combos.combo.length; i++) {
-			            tr = $('<tr/>');			          
-			            tr.append("<td>" + combos.combo[i].group + "</td>");			            
-			            tr.append("<td>" + combos.combo[i].winRatio + "</td>");
-			            
-			            $('#table-container1').append(tr);
-			        	}
-										
-						 for (var i = 0; i < combos.combo2.length; i++) {
-					            tr = $('<tr/>');					           
-					            tr.append("<td>" + combos.combo2[i].cluster1 +"  "+combos.combo2[i].cluster2+ "</td>");					            
-					            tr.append("<td>" + combos.combo2[i].winRatio + "</td>");
-					            
-					            $('#table-container2').append(tr);
-					        }
-					
-					
-						 for (var i = 0; i < combos.combo3.length; i++) {
-					            tr = $('<tr/>');					           
-					            tr.append("<td>" + combos.combo3[i].cluster1 +"   "+combos.combo3[i].cluster2+"   "+combos.combo3[i].cluster3+ "</td>");					            
-					            tr.append("<td>" + combos.combo3[i].winRatio + "</td>");
-					            
-					            $('#table-container3').append(tr);
-					        }
-					
-					
-						 for (var i = 0; i < combos.combo4.length; i++) {
-					            tr = $('<tr/>');					           
-					            tr.append("<td>" + combos.combo4[i].cluster1 +"   "+combos.combo4[i].cluster2+"   "+combos.combo4[i].cluster3+"   "+combos.combo4[i].cluster4+ "</td>");					            
-					            tr.append("<td>" + combos.combo4[i].winRatio + "</td>");
-					            
-					            $('#table-container4').append(tr);
-					        }
-					
-					
-						 for (var i = 0; i < combos.combo5.length; i++) {
-					            tr = $('<tr/>');					           
-					            tr.append("<td>" + combos.combo5[i].cluster1 +"   "+combos.combo5[i].cluster2+"   "+combos.combo5[i].cluster3+"   "+combos.combo5[i].cluster4+"   "+combos.combo5[i].cluster5+ "</td>");					            
-					            tr.append("<td>" + combos.combo5[i].winRatio + "</td>");
-					            
-					            $('#table-container5').append(tr);
-					        }				
-			        
-			        if (typeof oTable1 === 'undefined') {
-						oTable1 = $('#table-container1').dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					} else {
-						oTable1.fnDestroy();	
-						oTable1.dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					}
-			        if (typeof oTable2 === 'undefined') {
-						oTable2 = $('#table-container2').dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					} else {
-						oTable2.fnDestroy();	
-						oTable2.dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					}
-			        if (typeof oTable3 === 'undefined') {
-						oTable3 = $('#table-container3').dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					} else {
-						oTable3.fnDestroy();	
-						oTable3.dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					}
-			        if (typeof oTable4 === 'undefined') {
-						oTable4 = $('#table-container4').dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					} else {
-						oTable4.fnDestroy();	
-						oTable4.dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					}
-			        if (typeof oTable5 === 'undefined') {
-						oTable5 = $('#table-container5').dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					} else {
-						oTable5.fnDestroy();	
-						oTable5.dataTable({
-							"bStateSave": true,
-							"bPaginate": false,
-							"sDom": '<"top">rt<"bottom"lp><"clear">',
-						});
-					}
-			        
-										
-				});
+				
 				$('#table-container5').hide();
 				$('#table-container4').hide();
 				$('#table-container3').hide();
@@ -423,6 +304,127 @@
 					
 					$('#table-container').show();
 					$('#loading-indicator').hide();
+					
+					$.getJSON('${pageContext.request.contextPath}/api/combo/', function(combos) {
+						
+						$("#table-container1 tbody").remove();					
+						
+				        for (var i = 0; i < combos.combo.length; i++) {
+				            tr = $('<tr/>');			          
+				            tr.append("<td>" + combos.combo[i].group + "</td>");			            
+				            tr.append("<td>" + combos.combo[i].winRatio + "</td>");
+				            
+				            $('#table-container1').append(tr);
+				        	}
+											
+							 for (var i = 0; i < combos.combo2.length; i++) {
+						            tr = $('<tr/>');					           
+						            tr.append("<td>" + combos.combo2[i].cluster1 +"  "+combos.combo2[i].cluster2+ "</td>");					            
+						            tr.append("<td>" + combos.combo2[i].winRatio + "</td>");
+						            
+						            $('#table-container2').append(tr);
+						        }
+						
+						
+							 for (var i = 0; i < combos.combo3.length; i++) {
+						            tr = $('<tr/>');					           
+						            tr.append("<td>" + combos.combo3[i].cluster1 +"   "+combos.combo3[i].cluster2+"   "+combos.combo3[i].cluster3+ "</td>");					            
+						            tr.append("<td>" + combos.combo3[i].winRatio + "</td>");
+						            
+						            $('#table-container3').append(tr);
+						        }
+						
+						
+							 for (var i = 0; i < combos.combo4.length; i++) {
+						            tr = $('<tr/>');					           
+						            tr.append("<td>" + combos.combo4[i].cluster1 +"   "+combos.combo4[i].cluster2+"   "+combos.combo4[i].cluster3+"   "+combos.combo4[i].cluster4+ "</td>");					            
+						            tr.append("<td>" + combos.combo4[i].winRatio + "</td>");
+						            
+						            $('#table-container4').append(tr);
+						        }
+						
+						
+							 for (var i = 0; i < combos.combo5.length; i++) {
+						            tr = $('<tr/>');					           
+						            tr.append("<td>" + combos.combo5[i].cluster1 +"   "+combos.combo5[i].cluster2+"   "+combos.combo5[i].cluster3+"   "+combos.combo5[i].cluster4+"   "+combos.combo5[i].cluster5+ "</td>");					            
+						            tr.append("<td>" + combos.combo5[i].winRatio + "</td>");
+						            
+						            $('#table-container5').append(tr);
+						        }				
+				        
+				        if (typeof oTable1 === 'undefined') {
+							oTable1 = $('#table-container1').dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						} else {
+							oTable1.fnDestroy();	
+							oTable1.dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						}
+				        if (typeof oTable2 === 'undefined') {
+							oTable2 = $('#table-container2').dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						} else {
+							oTable2.fnDestroy();	
+							oTable2.dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						}
+				        if (typeof oTable3 === 'undefined') {
+							oTable3 = $('#table-container3').dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						} else {
+							oTable3.fnDestroy();	
+							oTable3.dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						}
+				        if (typeof oTable4 === 'undefined') {
+							oTable4 = $('#table-container4').dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						} else {
+							oTable4.fnDestroy();	
+							oTable4.dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						}
+				        if (typeof oTable5 === 'undefined') {
+							oTable5 = $('#table-container5').dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						} else {
+							oTable5.fnDestroy();	
+							oTable5.dataTable({
+								"bStateSave": true,
+								"bPaginate": false,
+								"sDom": '<"top">rt<"bottom"lp><"clear">',
+							});
+						}
+				        
+											
+					});
 				});
 				
 				e.preventDefault(); // prevent actual form submit and page reload
