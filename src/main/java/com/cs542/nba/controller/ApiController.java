@@ -48,7 +48,8 @@ public class ApiController {
 	public ArrayList<ComboInfo> getPlayerDetais(@PathVariable("clusterNumber") int clusters) {
 		
 		ArrayList<ClusterVariable> dataset = new ArrayList<ClusterVariable>();
-		ArrayList<PlayerStats> stats = getPlayerStats();		
+		ArrayList<PlayerStats> stats = getPlayerStats();
+		comboInfo.clear();     //clear comboinfo
 		for (PlayerStats s : stats) {
 			dataset.add(new ClusterVariable(s));
 		}		
