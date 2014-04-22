@@ -91,7 +91,7 @@
 
 					<!-- TAGLINE -->
 					<div id="tagline" class="col-md-4 hidden-xs hidden-sm">
-						<span>Developers bringing fire to the people.</span>
+						<span>Life is short, live it. Love is rare, grab it.  LET'S GO, ROCKETS!</span>
 					</div>
 
 					<!-- SOCIAL NAV -->
