@@ -64,7 +64,7 @@
 			<li><a href="<c:url value="/combo" />">
 				<span class="li_bulb"></span> Combos
 			</a></li>
-			<li><a href="<c:url value="stats" />">
+			<li><a href="<c:url value="/stats" />">
 				<span class="li_diamond"></span> Cluster
 			</a></li>
 			
@@ -102,7 +102,7 @@
 		<div class="row">
 		
 		<div style="clear:both;margin:20px">
-			<h3><a href="https://github.com/DiWang1223/NBA-data">Github</a></h3>
+			<h3><a href="https://github.com/DiWang1223/NBA-data">Github  <-- </a></h3>
 		</div>
 		
 		<div id="dwang" style="float:left; margin-left:20px;">

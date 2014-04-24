@@ -64,11 +64,11 @@
 			<li><a href="<c:url value="/combo" />">
 				<span class="li_bulb"></span> Combos
 			</a></li>
-			<li><a href="<c:url value="stats" />">
+			<li><a href="<c:url value="/stats" />">
 				<span class="li_diamond"></span> Cluster
 			</a></li>
 			
-			<li><a href="<c:url value="about" />">
+			<li><a href="<c:url value="/about" />">
 				<span class="li_user"></span> About
 			</a></li>
 		</ul>
@@ -115,6 +115,8 @@
 				<input type="submit" value="Filter" id="submit-button-2" />
 				<div id="loading-indicator-2"></div>
 			</form>
+			<div style="backgroud-color:blue;width:100px"><a href="http://aslab8.cs.wpi.edu/nba/">Show HeatMap</a></div>
+			
 			
 			<div class="ex_highlight_row">
 				<table class="sortable" id="table-container">

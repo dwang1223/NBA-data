@@ -92,14 +92,14 @@
 
 			<div id="post-1158" class="col-md-6">
 				<div class="article-grid">
-					<a class="article-img" href="combo"><img width="1200" height="500" src="<c:url value="/resources/img/team2.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
+					<a class="article-img" href="league"><img width="1200" height="500" src="<c:url value="/resources/img/team2.jpg"/>" class="img-responsive wp-post-image" alt="submitting-ajax-forms-with-jquery" /></a>
 					<div class="article-cat">
-						<a href="combo" title="View combinations of clusters" rel="category tag">Cluster Combos</a>	
+						<a href="league" title="View combinations of clusters" rel="category tag">Team</a>	
 					</div>
 
 					<div class="article-grid-content">
-						<h2><a href="#">Expolore Teams</a></h2>
-						<p><p>Let's explore the truth behind data.</p></p>
+						<h2><a href="league">View Teams</a></h2>
+						<p><p>Learn more about NBA league and teams.</p></p>
 					</div>
 				</div>
 			</div>
@@ -112,14 +112,34 @@
 					</div>
 
 					<div class="article-grid-content">
-						<h2><a href="stats">Expolore Clusters</a></h2>
-						<p><p>Let's focus on what the players did instead of how they look.</p></p>
+						<h2><a href="stats">Cluster analysis</a></h2>
+						<p><p>Let's explore the truth behind player statistics.</p></p>
 					</div>
 				</div>
 			</div>
 
 
+<!-- SECRET LAUNCH CODES FOR DEVS -->
+<!-- Easter Egg 1: aHR0cDovL3Njb3RjaC5pby/imaU= -->
 
+<%
+    Integer hitsCount = 
+      (Integer)application.getAttribute("hitCounter");
+    if( hitsCount ==null || hitsCount == 0 ){
+       /* first access */
+       //out.println("Welcome to my website!");
+       hitsCount = 1;
+    }else{
+       /*  return the value */
+       //out.println("Welcome back to my website!");
+       hitsCount += 1;
+    }
+    application.setAttribute("hitCounter", hitsCount);
+%>
+
+			<div class="col-md-6" style="clear:both; align:right">
+					<p>Total number of visits: <%= hitsCount%></p>
+			</div>
 		</div><!-- .row -->
 
 	</div><!-- #content .container -->
@@ -129,8 +149,8 @@
 </div>
 
 
-<!-- SECRET LAUNCH CODES FOR DEVS -->
-<!-- Easter Egg 1: aHR0cDovL3Njb3RjaC5pby/imaU= -->
+
+
 
 
 </body></html>
